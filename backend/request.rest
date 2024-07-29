@@ -1,0 +1,55 @@
+GET http://localhost:5000/users
+
+###
+# Mengakses route yang dilindungi dengan token
+GET http://localhost:5000/protected-route
+
+###
+GET http://localhost:5000/users/10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcyMjIzNjc0OCwiZXhwIjoxNzIyMjQwMzQ4fQ.kMsdri9bSw103cbjRw4vlTLFrvyxOEpRFYUiOypOWw8
+
+### Logout User
+POST http://localhost:5000/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcyMjIzMTUyMywiZXhwIjoxNzIyMjM1MTIzfQ.hr0JiWJBsit4qGnaEMzNe1ROU2FAewp1X9MibhlcPlo
+
+
+###
+GET http://localhost:5000/barang
+###
+
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+    "name" : "budi",
+    "email" : "dimas@gmail.com",
+    "gender" : "pria",
+    "password" : "password",
+    "alamat" : "jl winongan"
+}
+
+###
+PATCH  http://localhost:5000/users-update/5
+Content-Type: application/json
+
+{
+    "name" : "samid",
+    "email" : "dimas@gmail.com",
+    "gender" : "pria",
+    "password" : "password",
+    "alamat" : "jl. pasuruan"
+}
+
+###
+DELETE http://localhost:5000/users-delete/2
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "dimas@gmail.com",
+    "password": "password"
+}
+
+
