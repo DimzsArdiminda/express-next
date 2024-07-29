@@ -4,6 +4,8 @@ untuk install backend
 3. npx create-next-app@latest => install next js
 4. npm install bcrypt => add bycropt
 5. npm install axios => install requrement
+6. nodemon index => run server backend
+
 
 
 > database.js => koneksi
@@ -12,3 +14,10 @@ untuk install backend
 > UserRoute.js => menyimpan Route
 > index.js => server
 
+Fitur
+1. login
+2. logout
+3. middlware
+4. show data
+5. edit data
+6. delete data
