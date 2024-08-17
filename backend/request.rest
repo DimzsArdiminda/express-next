@@ -9,7 +9,7 @@ GET http://localhost:5000/users/10
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcyMjIzNjc0OCwiZXhwIjoxNzIyMjQwMzQ4fQ.kMsdri9bSw103cbjRw4vlTLFrvyxOEpRFYUiOypOWw8
 ###
 GET http://localhost:5000/users-show/dimas@gmail.com
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzIzODY2NjA3LCJleHAiOjE3MjM4NzAyMDd9.y1pgImO7J9yf-AoZYsvzJmM06WVYcLk9fCknwQbX4v8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJkaW1hczNAZ21haWwuY29tIiwiaWF0IjoxNzIzOTEwOTAwLCJleHAiOjE3MjM5MTQ1MDB9.ru5029dxDu83ccs-FTW9BzUpcsNEacw_JpIO7V1DhgM
 
 ### Logout User
 POST http://localhost:5000/logout
@@ -25,7 +25,7 @@ Content-Type: application/json
 
 {
     "name" : "budi",
-    "email" : "dimas2@gmail.com",
+    "email" : "dimas3@gmail.com",
     "gender" : "pria",
     "password" : "password",
     "alamat" : "jl winongan"
@@ -65,7 +65,7 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email": "test@gmail.com",
+    "email": "dimas3@gmail.com",
     "password": "password"
 }
 

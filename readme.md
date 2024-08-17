@@ -24,7 +24,9 @@ Fitur
 6. delete data  (done)
 7. greetings dashboard (done)
 8. show data by email (done)
-9. Register
+9. Register (done)
+10. profil 
+
 
 > Arsitektur code 
 1. frontend/app/protected/route.js => pengecekan link menggunakan token atau tidak

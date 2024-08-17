@@ -130,8 +130,29 @@ export const loginUser = async (req, res) => {
 // REGISTER USER
 export const registerUser = async (req, res) => {
     const { name, email, password, gender, alamat } = req.body;
+
+    // Validasi input
+    if (!name || !email || !password || !gender || !alamat) {
+        return res.status(400).json({ error: "Semua field harus diisi" });
+    }
+
+    // Validasi format email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ error: "Format email tidak valid" });
+    }
+
     try {
+        // Cek apakah email sudah digunakan
+        const existingUser = await UserModel.findOne({ where: { email } });
+        if (existingUser) {
+            return res.status(409).json({ error: "Email sudah digunakan" });
+        }
+
+        // Hash password sebelum disimpan ke database
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Buat pengguna baru
         await UserModel.create({
             name,
             email,
@@ -139,12 +160,13 @@ export const registerUser = async (req, res) => {
             gender,
             alamat,
         });
+
         res.status(201).json({ msg: "Pengguna telah terdaftar" });
     } catch (error) {
-        console.log(error.message);
-        res.status(500).json({ error: error.message });
+        console.error(error.message);
+        res.status(500).json({ error: "Terjadi kesalahan pada server" });
     }
-}
+};
 
 
 // show data user
