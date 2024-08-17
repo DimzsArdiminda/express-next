@@ -67,6 +67,9 @@ const Protected = () => {
             >
             Logout
           </button>
+          <Link className="btn btn-info mt-4" href="/dashboard/profile">
+              <p >profil</p>
+          </Link>
           </div>
       </main>
     </>

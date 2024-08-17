@@ -82,26 +82,6 @@ export const logoutUser = (req, res) => {
 };
 
 // LOGIN USER
-// sementara tidak terpakai
-export const loginUser2 = async (req, res) => {
-    const { email, password } = req.body;
-    try {
-        const user = await UserModel.findOne({ where: { email } });
-        if (!user) {
-            return res.status(404).json({ msg: "Pengguna tidak ditemukan" });
-        }
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).json({ msg: "Password salah" });
-        }
-        const token = jwt.sign({ id: user.id }, 'd1f5d8e1c5a0a6f4e3b2d9c8a7b6e5f4d3c2b1e6d5c4b3a2d1f4e3b2a1c6d5e4', { expiresIn: '1h' });
-        res.status(200).json({ token });
-    } catch (error) {
-        console.log("login error: ",error.message);
-        res.status(500).json({ error: error.message });
-    }
-}
-
 export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
