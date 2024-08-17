@@ -7,6 +7,9 @@ GET http://localhost:5000/protected-route
 ###
 GET http://localhost:5000/users/10
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcyMjIzNjc0OCwiZXhwIjoxNzIyMjQwMzQ4fQ.kMsdri9bSw103cbjRw4vlTLFrvyxOEpRFYUiOypOWw8
+###
+GET http://localhost:5000/users-show/dimas@gmail.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzIzODY2NjA3LCJleHAiOjE3MjM4NzAyMDd9.y1pgImO7J9yf-AoZYsvzJmM06WVYcLk9fCknwQbX4v8
 
 ### Logout User
 POST http://localhost:5000/logout

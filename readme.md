@@ -5,6 +5,7 @@ untuk install backend
 4. npm install bcrypt => add bycropt
 5. npm install axios => install requrement
 6. nodemon index => run server backend
+7. npm install --save jwt-decode => jwt decode
 
 
 
@@ -15,9 +16,16 @@ untuk install backend
 > index.js => server
 
 Fitur
-1. login
-2. logout
-3. middlware
-4. show data
-5. edit data
+1. login (done)
+2. logout (done)
+3. middlware (done)
+4. show data (done)
+5. edit data 
 6. delete data
+7. greetings dashboard (done)
+8. show data by email (done)
+
+
+> Arsitektur code 
+1. frontend/app/protected/route.js => pengecekan link menggunakan token atau tidak
+2. frontend/app/lib/auth.js => middlware

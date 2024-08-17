@@ -1,5 +1,10 @@
 // lib/auth.js
+'use client'
 import jwt from 'jsonwebtoken';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
+
 
 export const verifyToken = (context) => {
   const { req } = context;
@@ -26,3 +31,30 @@ export const verifyToken = (context) => {
     };
   }
 };
+
+
+export const useAuthMiddleware = () => {
+  const [message, setMessage] = useState('');
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchProtectedData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          router.push('/');
+          return;
+        }
+        // const response = await axios.get('/api/protected', {
+        //   headers: {
+        //     'Authorization': `Bearer ${token}`,
+        //   },
+        // });
+        // setMessage(response.data.msg);
+      } catch (error) {
+          setMessage('Access denied: ' + (error ).response.data.msg);
+      }
+    };
+    fetchProtectedData();
+  }, [router]);
+}

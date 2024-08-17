@@ -5,9 +5,12 @@ import Link from "next/link";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import {jwtDecode } from 'jwt-decode';
+import { getGreeting, handleLogout } from "../lib/fitur";
 
 const Protected = () => {
   const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -18,12 +21,15 @@ const Protected = () => {
           router.push('/');
           return;
         }
-        const response = await axios.get('/api/protected', {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-        setMessage(response.data.msg);
+        const decoded: { email: string } = jwtDecode(token); // Dekode token untuk mendapatkan email
+        setEmail(decoded.email);
+
+        // const response = await axios.get('/api/protected', {
+        //   headers: {
+        //     'Authorization': `Bearer ${token}`,
+        //   },
+        // });
+        // setMessage(response.data.msg);
       } catch (error) {
         setMessage('Access denied: ' + (error as any).response.data.msg);
       }
@@ -31,22 +37,14 @@ const Protected = () => {
     fetchProtectedData();
   }, [router]);
 
-  const handleLogout = async () => {
-    try {
-      await fetch('http://localhost:5000/logout', { method: 'POST' });
-      localStorage.removeItem('token');
-      router.push('/');
-    } catch (error) {
-      console.error('Logout gagal:', error);
-    }
-  };
+
 
   return (
     <>
-      <header className="bg-slate-700 p-5">
+     <header className="bg-slate-700 p-5">
         <div className="container mx-auto">
           <h1 className="text-white text-center font-semibold text-2xl">
-            Pilih menu di bawah ini untuk navigasi ke halaman yang anda inginkan
+            {getGreeting()} {email}! Pilih menu di bawah ini untuk navigasi ke halaman yang anda inginkan
           </h1>
         </div>
       </header>
@@ -58,18 +56,18 @@ const Protected = () => {
               <span className="text-base font-semibold">Tabel Data</span>
             </p>
           </Link>
-          <Link href="/api">
+          <Link href="/dashboard/api">
             <p className="flex items-center justify-center p-3 max-w-xs bg-green-500 text-white rounded-md shadow-md hover:bg-green-600 transition duration-300 ease-in-out">
               <span className="text-base font-semibold">Halaman Lain</span>
             </p>
           </Link>
-        </div>
-        <button
-          onClick={handleLogout}
-          className="btn btn-secondary mt-4"
-        >
-          Logout
-        </button>
+          <button
+            onClick={handleLogout}
+            className="btn btn-secondary mt-4"
+            >
+            Logout
+          </button>
+          </div>
       </main>
     </>
   );

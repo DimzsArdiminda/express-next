@@ -1,7 +1,7 @@
 
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize('learn_crud', 'root', '', {
+const db = new Sequelize('fullstack', 'root', '', {
     host: "localhost",
     dialect: "mysql",
 });
