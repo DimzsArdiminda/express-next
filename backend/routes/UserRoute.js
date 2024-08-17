@@ -12,6 +12,7 @@ import {
         loginUser,
         logoutUser,
         getUserByEmail,
+        updateByEmail
 } from "../controller/userController.js";
 
 const router = express.Router();
@@ -19,8 +20,9 @@ const router = express.Router();
 router.get('/users',verifyToken, getUser); // get user
 router.get('/users/:id', verifyToken, getUserByID); // get user by id
 router.post("/users-buat", verifyToken, CreateUser); // add user
-router.patch('/users-update/:id', verifyToken, updateUser); // update user
 router.get('/users-show/:email', verifyToken, getUserByEmail); // update user
+router.patch('/users-update/:id', verifyToken, updateUser); // update user
+router.patch('/users-update-email/:email', verifyToken, updateByEmail); // update user
 router.delete('/users-delete/:id', verifyToken, deleteUser); // delete user
 
 

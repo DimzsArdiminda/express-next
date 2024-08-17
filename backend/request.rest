@@ -25,7 +25,7 @@ Content-Type: application/json
 
 {
     "name" : "budi",
-    "email" : "dimas@gmail.com",
+    "email" : "dimas2@gmail.com",
     "gender" : "pria",
     "password" : "password",
     "alamat" : "jl winongan"
@@ -44,14 +44,28 @@ Content-Type: application/json
 }
 
 ###
+PATCH  http://localhost:5000/users-update-email/dimas@gmail.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTcyMzg4MDQwNSwiZXhwIjoxNzIzODg0MDA1fQ.dK21INKCndjO27ZNpNcqHhEIbtpnyEFmztwh64OgkcY
+Content-Type: application/json
+
+{
+    "name" : "budi",
+    "email" : "dimas@gmail.com",
+    "gender" : "pria",
+    "password" : "password234",
+    "alamat" : "jl. pasuruan kab pasuruan"
+}
+
+###
 DELETE http://localhost:5000/users-delete/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTcyMzkwMzc4OSwiZXhwIjoxNzIzOTA3Mzg5fQ.zYILqEKOHUHODCysF0EEguNS2TQaCgy5IQC68EkNmXk
 
 ###
 POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email": "dimas@gmail.com",
+    "email": "test@gmail.com",
     "password": "password"
 }
 

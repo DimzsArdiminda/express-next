@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
+import DeleteHandler from "./delete/page";
 
 type Pengguna = {
     id: number;
@@ -98,9 +99,7 @@ export default function Tabel() {
                                     <Link href={`/dashboard/tabel-data/${data.email}`} className="btn btn-warning h-4">
                                         Edit
                                     </Link>
-                                    <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">
-                                        Delete
-                                    </button>
+                                    <DeleteHandler pengguna={data}/>
                                 </td>
                             </tr>
                         ))}

@@ -20,11 +20,11 @@ Fitur
 2. logout (done)
 3. middlware (done)
 4. show data (done)
-5. edit data 
-6. delete data
+5. edit data  (done)
+6. delete data  (done)
 7. greetings dashboard (done)
 8. show data by email (done)
-
+9. Register
 
 > Arsitektur code 
 1. frontend/app/protected/route.js => pengecekan link menggunakan token atau tidak

@@ -6,6 +6,48 @@ import jwt from 'jsonwebtoken';
 
 
 
+// update by email
+export const updateByEmail = async (req, res) => {
+    try {
+        
+        const { password, name, email, gender, alamat  } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const update = {
+            name: name,
+            email: email,
+            password: hashedPassword,
+            gender: gender,
+            alamat: alamat,
+        }
+
+        await UserModel.update(update, {
+            where: {
+                email: req.params.email
+            }
+        });
+        res.status(200).json({ msg: "data update" });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ error: error.message });
+    }
+}
+
+export const updatePass = async (req, res) => {
+    try {
+        const { password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        await UserModel.update({ password: hashedPassword }, {
+            where: {
+                email: req.params.email
+            }
+        });
+        res.status(200).json({ msg: "User password updated" });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ error: error.message });
+    }
+}
+
 // show data user by emal
 export const getUserByEmail = async (req, res) => {
     try {

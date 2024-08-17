@@ -6,4 +6,10 @@ const db = new Sequelize('fullstack', 'root', '', {
     dialect: "mysql",
 });
 
+db.authenticate().then(() => {
+    console.log("Database connected");
+}).catch((err) => {
+    console.log("Error: ", err);
+});
+
 export default db;
